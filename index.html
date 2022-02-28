@@ -1,0 +1,286 @@
+<script>
+  //ex of array
+  let arr = [1, 2, 3, 4];
+  let arr2 = [5, 6];
+
+  arr = [...arr, ...arr2];
+  console.log(arr);
+  //output:
+  //1,2,3,4,5,6
+
+  //using array method
+
+  let ab = ["A, B, C, D"];
+  let cd = [...ab];
+
+  cd.push("E");
+  console.log(cd);
+  //output:
+  //A,B,C,D,E
+
+  //array
+
+  const ac = [11, 12, 13, 14];
+  const ef = [15, ...ac, 16];
+  console.log(ef);
+
+  //min and max value
+
+  const xy = [45, 67, 89, 12];
+
+  console.log(Math.min(...xy));
+  console.log(Math.max(...xy));
+
+  //using in obeject
+
+  const family = {
+    name: "Hetika",
+    lastname: "Paneliya",
+    age: 23,
+    city: "Surat",
+  };
+
+  const spreadop = { ...family };
+  console.log(spreadop);
+
+  //one or more object using spread operator
+
+  const car1 = {
+    car: "Swift",
+    brand: "tata",
+    price: 1.5,
+  };
+  const car2 = {
+    car: "audi",
+    brand: "Honda",
+  };
+  const carbrand = { ...car1, ...car2 };
+  console.log(carbrand);
+
+  //function using sperad oprator
+  function sum(x, y, z) {
+    console.log(x + y + z);
+  }
+  const nnum = [1, 2, 3];
+  console.log(sum(...nnum));
+
+  //sperad operator using object
+
+  /* const obj1 = {
+      objname: "dev",
+      objjender: "male",
+    };
+
+    const obj2 = {
+      ...obj1,
+      objage: 19,
+    };
+
+    obj2["height"] = 5.4;
+    console.log(obj2);
+  */
+  //
+
+  let furits = ["mango", "orange", "apple"];
+  let fruitcopy = [...furits];
+
+  console.log(fruitcopy);
+
+  //nodelist using sprad operator
+
+  let nodelist = document.querySelectorAll(".class");
+  var nodearray = [...nodelist];
+
+  //converting string to character
+
+  let name = "Ram";
+  let char = [...name];
+  console.log(char);
+
+  //passing argument with arrow function
+
+  const dynamic = (args1, ...args) => {
+    console.log("args1: " + args1);
+    console.log("args: " + args);
+  };
+  dynamic(1, 2, 3, 4, 5, 6);
+
+  //Spreading elements together with an individual element
+
+  const fruit = ["mango", "orange", "kiwi"];
+  const newfruit = ["swtobarry", ...fruit];
+  console.log(newfruit);
+
+  //concat array
+
+  const arra = ["a", "b", "c", "d"];
+  const arra2 = ["e", "f", "g"];
+
+  const arra1 = arra.concat(arra2);
+  console.log(arra1);
+
+  //rest parameter
+
+  args = "Ram";
+  char = [...args];
+  console.log(char);
+
+  function linuxhint(a, ...aq) {
+    console.log("First perameter:" + a);
+    console.log("second peramater:" + aq);
+  }
+  linuxhint(1, 2, 3, 4, 5);
+
+  function rest(first, second, ...remainder) {
+    console.log(remainder);
+  }
+  rest(11, 12, 13, 14, 15);
+
+  //rest perameter using function
+
+  function myfun(a, b, ...manyargs) {
+    console.log(a);
+    console.log(b);
+    console.log("manyargs", manyargs);
+  }
+  myfun("one", "two", "three", "four", "five");
+
+  //short circulting that is the useing in boolean variable.
+  //that is return in true or false value.
+
+  console.log("=======AND======");
+
+  console.log("true" && "false"); //false
+  console.log(6 && 7); //7
+  console.log(3 && "hetika"); //hetika
+  console.log("hetika" && "dev"); //dev
+
+  console.log("======OR====");
+
+  console.log(null || 0 || "" || "hello" || 23 || undefined); //hello
+  console.log("true" || "false"); //true
+  console.log(3 || "hetika"); //3
+  console.log(4 || 5); //4
+  console.log("hetika" || "dev"); //hetika
+
+  var name1 = "abc";
+  if (name1 == "hetika" || name1 == "abc") {
+    console.log(name1);
+  }
+
+  //nullish coelsing
+
+  let result = undefined ?? "hello";
+  console.log(result);
+
+  result = null ?? 12;
+  console.log(result);
+
+  result = "abcd" ?? null;
+  console.log(result);
+
+  result = 145 ?? 12;
+  console.log(result);
+
+  result = null ?? undefined;
+  console.log(result);
+
+  result = "abcd" ?? "efghi";
+  console.log(result);
+
+  result = null ?? "";
+  console.log(result);
+
+  result = "fg" ?? 12;
+  console.log(result);
+
+  result = 4 < 5 ?? true;
+  console.log(result);
+
+  result = 12 > 11118 ?? false;
+  console.log(result);
+
+  result = ["a", "b", "v"] ?? 12;
+  console.log(result);
+
+  //for-of loop
+
+  //for-of loop using string
+  const string = "code";
+  for (let i of string) {
+    console.log(i);
+  }
+
+  //for-of loop using array.
+  const students = ["john", "sara", "shark"];
+  for (ele of students) {
+    console.log(ele);
+  }
+
+  //for-of loop usingobjects
+  //for-in and for-of loop compearison
+  /*                     for..in                        for..of
+   Applies to         Enumerable Properties          Iterable Collections
+   Objects            Yes                            No
+   Arrays             Yes, but not advised           Yes
+   Strings            Yes, but not advised           Yes*/
+
+  const obj = {
+    first: 154,
+    second: 163,
+    thired: 255,
+  };
+
+  for (let keys in obj) {
+    console.log(obj[keys]);
+  }
+
+  console.log("====for-of loop===");
+  const marks = [154, 555, 23698, 589, 258];
+  for (let i of marks) {
+    console.log(i);
+  }
+  // Print names and values of object properties
+  const shark = {
+    species: "great white",
+    color: "white",
+    numberOfTeeth: Infinity,
+  };
+
+  for (attribute in shark) {
+    console.log(`${attribute}`.toUpperCase() + `: ${shark[attribute]}`);
+  }
+
+  //enhanced objects litterls::that means global scope code to put the javascript code using objects.
+
+  let firstname = "hetika",
+    lastname = "paneliya",
+    age = "23";
+
+  let customer = {
+    firstname,
+    lastname,
+    age,
+  };
+  console.log(customer);
+
+  //enhanced objects litterial using function
+
+  let carname = "creta",
+    color = "white",
+    capacity = 7;
+
+  let cardetails = function () {
+    console.log(
+      `This is car name is ${carname} and this car color is ${color} and that car capicity is ${capacity}...`
+    );
+  };
+
+  let details = {
+    carname,
+    color,
+    capacity,
+    cardetails,
+  };
+  details.cardetails();
+</script>
