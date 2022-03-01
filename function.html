@@ -1,0 +1,42 @@
+<script>
+  //Defult perameter
+
+  console.log("===============");
+
+  function multiplication(a, b = 3) {
+    console.log(a * b);
+  }
+  multiplication(5);
+
+  //defult perameter using function
+
+  function msg(message = "hello") {
+    console.log(message);
+  }
+  msg("hiii");
+  msg(undefined);
+
+  //passing value in pass by value and pass by reference
+
+  //pass by value
+  //pass by value it is to change any value to change to that particular values change
+
+  let x = 5;
+  let y = x;
+
+  z = y + 5;
+  console.log(z);
+
+  //pass by reference
+  //pass by reference to change one value it is change all value in objects
+
+  const objects = {
+    name: "abc",
+    password: "xyz",
+  };
+
+  const obj2 = objects;
+
+  console.log(objects);
+  console.log(obj2);
+</script>
