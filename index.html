@@ -67,18 +67,18 @@
   //sperad operator using object
 
   /* const obj1 = {
-      objname: "dev",
-      objjender: "male",
-    };
+          objname: "dev",
+          objjender: "male",
+        };
 
-    const obj2 = {
-      ...obj1,
-      objage: 19,
-    };
+        const obj2 = {
+          ...obj1,
+          objage: 19,
+        };
 
-    obj2["height"] = 5.4;
-    console.log(obj2);
-  */
+        obj2["height"] = 5.4;
+        console.log(obj2);
+      */
   //
 
   let furits = ["mango", "orange", "apple"];
@@ -220,10 +220,10 @@
   //for-of loop usingobjects
   //for-in and for-of loop compearison
   /*                     for..in                        for..of
-   Applies to         Enumerable Properties          Iterable Collections
-   Objects            Yes                            No
-   Arrays             Yes, but not advised           Yes
-   Strings            Yes, but not advised           Yes*/
+       Applies to         Enumerable Properties          Iterable Collections
+       Objects            Yes                            No
+       Arrays             Yes, but not advised           Yes
+       Strings            Yes, but not advised           Yes*/
 
   const obj = {
     first: 154,
@@ -283,4 +283,182 @@
     cardetails,
   };
   details.cardetails();
+
+  //optinal chinning::means to access in objects property in javascript code.
+  //synax: objname.objvalue?.objproperty
+  //       obj.val?.prop
+
+  const adventurer = {
+    name: "Alice",
+    cat: {
+      name: "Dinah",
+    },
+  };
+
+  const catname = adventurer.cat?.name;
+  console.log(catname);
+
+  //looping objects keys,values,entries..
+
+  const person = {
+    personname: "abcd",
+    personage: 20,
+    personstatus: "active",
+  };
+
+  console.log(person);
+  console.log(Object.keys(person));
+  console.log(Object.values(person));
+  console.log(Object.entries(person));
+
+  ///
+
+  const objkeys = Object.keys(person);
+  console.log(objkeys);
+
+  objkeys.forEach((key) => console.log(key));
+  console.log("======keys=====");
+  console.log(objkeys[2]);
+
+  const emptyobj = {};
+  console.log(Object.keys(emptyobj));
+
+  //objects values
+
+  console.log("=====values====");
+
+  const objvalues = Object.values(person);
+  console.log(objvalues);
+
+  objvalues.forEach((values) => console.log(values));
+
+  console.log(objvalues[2]);
+
+  const emptyobj1 = {};
+  console.log(Object.values(emptyobj1));
+
+  //entries
+
+  console.log("=====entries====");
+
+  const objentries = Object.entries(person);
+  console.log(objentries);
+
+  objentries.forEach((entries) => console.log(entries));
+
+  console.log(objentries[2]);
+
+  const emptyobj2 = {};
+  console.log(Object.values(emptyobj2));
+
+  //objects keys values and entries using for-of loop
+
+  const wonam = {
+    wname: "john",
+    wcolor: "white",
+    wgender: "female",
+  };
+
+  const myobjenteris = Object.entries(wonam);
+  console.log(myobjenteris);
+  //for-of loop
+
+  for (const entry of myobjenteris) {
+    const [key, value] = entry;
+
+    console.log(`key:${key} value: ${value} entry:{${key}: ${value}}`);
+  }
+
+  //ojects keys values and entries using destruvturing onjects..
+
+  console.log("---=====----");
+
+  for (const [key, value] of myobjenteris) {
+    console.log(`key:${key} value: ${value} entry:{${key}: ${value}}`);
+  }
+
+  //sets stores uniqe values .not store in duplicates values.
+  //sets using adifferent method :set,clear,delete,has,foreach,key,values,entries
+
+  var set1 = new Set();
+
+  set1.add(10);
+  set1.add(20);
+  set1.add(10);
+  set1.add(30);
+  set1.add(40);
+  set1.delete(40);
+  console.log(set1.has(202));
+  console.log(set1.size);
+
+  //sets using foreach loop
+
+  set1.forEach((item) => {
+    console.log("thi is item:", item);
+  });
+
+  //sets using for-of loop
+
+  console.log("===========");
+  for (let item of set1) {
+    console.log("This Is item :", item);
+  }
+  //clear
+
+  //set1.clear();
+  console.log(set1);
+
+  //Map:: means we can use any type of keys or values.
+
+  const map1 = new Map();
+  console.log(map1);
+
+  const KEY1 = "MYSTR",
+    key2 = {},
+    key3 = function () {};
+
+  //set the keys
+
+  map1.set(KEY1, "This is a string");
+  map1.set(key2, "This is a empty objects");
+  map1.set(key3, "This is a empty function");
+
+  console.log(map1);
+  //get keyvalues
+
+  const value1 = map1.get(KEY1);
+  console.log(value1);
+
+  const value2 = map1.get(key2);
+  console.log(value2);
+
+  const value3 = map1.get(key3);
+  console.log(value3);
+
+  //defines a size of map
+  console.log(map1.size);
+
+  for (let [keys, value] of map1) {
+    console.log(keys, value);
+  }
+
+  //get only keys using for of loop
+  for (let key of map1.keys()) {
+    console.log("keys is:", key);
+  }
+
+  //get only values using for -of loop
+  for (let value of map1.values()) {
+    console.log("values is:", value);
+  }
+
+  //converting map to array
+
+  const myarray = Array.from(map1);
+  console.log("Map to array", myarray);
+
+  //converting map array to keys
+  //converting map array ti values same it is
+  const mykeyarray = Array.from(map1.keys());
+  console.log("Map to  key array", mykeyarray);
 </script>
