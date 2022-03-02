@@ -36,7 +36,200 @@
   };
 
   const obj2 = objects;
+  obj2.password = "por";
 
   console.log(objects);
   console.log(obj2);
+
+  const obj1 = {
+    oname: "allie",
+    opassword: "johns",
+  };
+
+  const obj3 = {
+    oname: "allie",
+    opassword: "johns",
+  };
+
+  console.log(obj1 == obj3);
+  console.log(obj1 === obj3);
+
+  //higher order function ::: it means function retun in own function.
+
+  function interviewque(candidatename) {
+    if (candidatename === "hetika") {
+      return function (topic) {
+        console.log(`HIIi ${candidatename} .What is ${topic}. plz explian us`);
+      };
+    }
+    if (candidatename == "abc") {
+      return function (topic) {
+        console.log(`HIIi ${candidatename} .What is ${topic}. plz explian us`);
+      };
+    }
+    if (candidatename == "xyz") {
+      return function (topic) {
+        console.log(`HIIi ${candidatename} .What is ${topic}. plz explian us`);
+      };
+    } else {
+      return function () {
+        console.log("Wel-come Interview Question");
+      };
+    }
+  } //first to display
+  /*interviewque("hetika")("Recat Javascript");
+      interviewque("abc")("Node Javascript");
+      interviewque("xyz")("shopify ");*/
+  //second to dispaly
+  const can1 = interviewque("hetika");
+  can1("Rescat js");
+
+  const can2 = interviewque("abc");
+  can2("node js");
+
+  // //first class function:: javascript function pass the aargument,return a value ,store the variable  to pass the function that is first class function.
+
+  const airthmethicoperatortion = {
+    add: (a, b) => {
+      return `${a} + ${b} = ${a + b} `;
+    },
+    multiplicate: (a, b) => {
+      return `${a} - ${b} = ${a - b} `;
+    },
+  };
+  console.log(airthmethicoperatortion.add(100, 20));
+  console.log(airthmethicoperatortion.multiplicate(30, 20));
+
+  ///callback function::A callback is a function that is to be executed after another function has finished executing — hence the name ‘call back’.
+  //callback function
+
+  function processUserInput(some) {
+    //  var name = prompt("Please enter your name.");
+    some(name);
+  }
+
+  function greeting(name) {
+    // alert("Hello " + name);
+  }
+
+  processUserInput(greeting);
+  //function callback
+  /*
+      function greeting(name) {}
+      function first() {
+        greeting(hello);
+      }*/
+
+  function first() {
+    console.log(1);
+  }
+  function second() {
+    console.log(2);
+  }
+  first();
+  second();
+  //function return
+
+  function myfunction() {
+    return Math.PI;
+  }
+  console.log(myfunction());
+
+  //call
+  /* function employee() {
+      const details = `Name is ${this.name} and id is ${this.id}`;
+      console.log(details);
+    }
+    const emp1 = {
+      name: "Geeks",
+      id: "234412",
+    };
+    /*  var emp2 = {
+      name: "G4G",
+      id: "434556",
+    };*/
+  // employee.call(emp1);
+
+  //function apply method:::pass argument as an array
+  var emp2 = { name: "hetika", lastname: "paneliya" };
+
+  function employee(details) {
+    console.log(details + " " + this.name + " " + this.lastname);
+  }
+
+  employee.apply(emp2, ["hello"]);
+
+  //function bind method::: pass argument as a number and array to another object.
+  var emp2 = { name: "hetika", lastname: "paneliya" };
+
+  function employee() {
+    console.log("hiiiii" + " " + this.name + " " + this.lastname);
+  }
+  var sayhello = employee.bind(emp2);
+
+  sayhello();
+
+  //immedatily invoked function expression(IIFE)
+
+  (function () {
+    var AName = "hetika";
+    console.log("MY name is " + AName);
+  })();
+
+  //clousesr
+  function outerfun(a) {
+    const b = 5;
+    function innerfun() {
+      const sums = a + b;
+      console.log(`Sum of two Number ${sums}`);
+    }
+    innerfun();
+  }
+  outerfun(9);
+
+  //loopin in foreach loop
+
+  /* const numbers = [123, 456, 89, 4, 56, 23];
+  const addition = 0;
+  numbers.forEach(functionadd);
+
+  function functionadd(items) {
+    addition = addition + items;
+  }
+  console.log(items);*/
+
+  const color = ["white", "red", "black", "pink"];
+  function iterete(item) {
+    console.log(item);
+  }
+  color.forEach(iterete);
+
+  //foreach using set and map
+
+  let mp = new Map();
+
+  // Adding values to the map
+  mp.set("a", 1);
+  mp.set("b", 2);
+  mp.set("c", 3);
+
+  // Logging map object to console
+  mp.forEach((values, keys) => {
+    document.write(values, keys + "<br>");
+  });
+
+  //fiter
+  let numbervalue = [1.2, 0, -123, 1.365, -15, 14, 45, 20];
+  let positivearray = numbervalue.filter(function (value) {
+    return value >= 0;
+  });
+  console.log(positivearray);
+
+  //reduce method
+
+  let num = [12, 15, 48];
+  let sum = num.reduce(function (previous, current) {
+    return previous + current;
+  });
+  console.log(sum);
 </script>
