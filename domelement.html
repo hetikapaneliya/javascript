@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript Selected Value</title>
+    <link href="" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="container">
+      <form>
+        <h1>Select a JS Framework:</h1>
+        <select id="framework" style="display: block; margin: 20px">
+          <option value="0">Angular</option>
+          <option value="1">React</option>
+          <option value="2">Vue.js</option>
+          <option>Ember.js</option>
+        </select>
+        <button id="btn" style="margin-left: 20px">
+          Get the Selected Value
+        </button>
+        <hr />
+        <h1>This Is JavaScript Tutorial</h1>
+        <h2>This is Javascript releted Tutoraial</h2>
+      </form>
+    </div>
+    <hr />
+
+    <p id="demo">
+      Click "Remove", and this paragraph will be removed from the DOM.
+    </p>
+    <button onclick="myFunction()" id="btnremove">Remove</button>
+
+    <ul id="list">
+      <li>Coffee</li>
+      <li>Tea</li>
+      <li>Milk</li>
+    </ul>
+
+    <script>
+      //select element
+
+      const btn = document.querySelector("#btn");
+      const sb = document.querySelector("#framework");
+      //style
+      btn.style.background = "pink";
+      btn.style.color = "black"; //end
+      btn.onclick = (event) => {
+        event.preventDefault();
+        alert(sb.value);
+      };
+
+      //create element
+
+      const tag = document.createElement("h3");
+      const text = document.createTextNode("This Is Advanced Javascreipt");
+      tag.appendChild(text);
+      var elements = document.getElementById("container");
+      elements.appendChild(tag);
+
+      //remove element
+
+      function myFunction() {
+        const myobj = document.getElementById("demo");
+        myobj.remove();
+      }
+      function myFunction() {
+        const mylist = document.getElementById("list");
+        const ele = document.getElementById("btnremove");
+        ele.style.background = "pink";
+        ele.style.color = "black";
+        ele.style.border = "5px solid #C39BD3";
+        mylist.removeChild(mylist.firstElementChild);
+      }
+      ///event handler
+
+      document.getElementById("btnremove").addEventListener(click, myFunction);
+      document.getElementById("btnremove").addEventListener(click, myFunction);
+    </script>
+  </body>
+</html>
