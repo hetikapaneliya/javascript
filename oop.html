@@ -1,0 +1,188 @@
+<script>
+  //consrutor and new operator
+
+  const car = {
+    carname: "kia",
+    color: "white",
+    speed: 120,
+    run: function () {
+      console.log("Car is running");
+    },
+  };
+
+  //create a construtor in car
+
+  function genratecar(givenname, givenspeed) {
+    this.carname = givenname;
+    this.speed = givenspeed;
+    this.run = function () {
+      console.log(`${this.carname} is running`);
+    };
+  }
+  //NEW OPERATOR
+  car1 = new genratecar("Nishan", 180);
+  console.log(car1);
+
+  function person(firstname, birthyears) {
+    this.firstname = firstname;
+    this.birthyears = birthyears;
+
+    this.calcaverage = function () {
+      return 2022 - this.birthyears;
+    };
+  }
+
+  const meta = new person("jonas", 1991);
+  const jack = new person("meta", 1990);
+  console.log(meta, jack);
+
+  //prototype
+  console.log(person.prototype);
+  person.prototype.calcaverage = function () {
+    console.log(2022 - this.birthyears);
+  };
+  jack.calcaverage();
+
+  //prototype
+
+  function student(studentname, gender) {
+    this.studentname = studentname;
+    this.gender = gender;
+  }
+  const hetika = new student("hetika", 1999);
+  console.log(hetika);
+
+  student.prototype.age = 15;
+
+  const studentobj = new student();
+  console.log(studentobj.age);
+
+  //prototypal inheritance
+  /*
+    const dog={leges:2};
+    const pig={sound:'mows',__proto__:leges};
+    pig.leges;
+    console.log(pig);*/
+
+  //classs declaration
+
+  class rect {
+    constructor(height, weghit) {
+      this.heghit = heghit;
+      this.weghit = weghit;
+    }
+  }
+
+  console.log(rect.name);
+
+  //class expresion
+
+  var Polygon = class {
+    constructor(height, width) {
+      this.h = height;
+      this.w = width;
+    }
+    test() {
+      console.log("The height of the polygon: ", this.h);
+      console.log("The width of the polygon: ", this.w);
+    }
+  };
+
+  //creating an instance
+  var polyObj = new Polygon(10, 20);
+  polyObj.test();
+
+  //getter and setter
+
+  class students {
+    constructor(rno, fname, lname) {
+      this.rno = rno;
+      this.fname = fname;
+      this.lname = lname;
+      console.log("Inside Consructor");
+    }
+    //setter method::setter method to set the value of property.use set keyword.
+    set rollno(newrollno) {
+      console.log("inside setter");
+      this.rno = newrollno;
+    }
+  }
+  let s1 = new students(80, "Hetika", "paneliya");
+  console.log(s1);
+  //setter method called
+
+  s1.rollno = 90;
+  console.log(s1);
+
+  //getter method:::that is to fetch the value of property.use get keyword.
+  class schoolstudents {
+    constructor(rno, fname, lname) {
+      this.rno = rno;
+      this.fname = fname;
+      this.lname = lname;
+      console.log("Inside Consructor");
+    }
+    //getter method
+    get fullname() {
+      console.log("inside getter");
+      //concat the fullname
+      return this.fname + " " + this.lname;
+    }
+  }
+  let sc1 = new schoolstudents(80, "Hetika", "paneliya");
+  console.log(s1);
+  //getter method called
+  console.log(sc1.fullname);
+
+  //static keyword
+
+  class staticmen {
+    static display() {
+      console.log("This is Static function");
+    }
+  }
+  staticmen.display();
+
+  //inheritance between class constutor function
+
+  function employeee(name, empage, gender, id) {
+    this.name = name;
+    this.empage = empage;
+    this.gender = gender;
+    this.id = id;
+  }
+  function develop(name, empage, gender, id, post) {
+    //class constutor calll
+
+    employeee.call(this, name, empage, gender, id);
+
+    //adding new perameter
+
+    this.post = post;
+  }
+  //creating objects
+
+  let emp1 = new employeee("Hetika", 23, "female", 101);
+  let deve1 = new develop("Hetika", 23, "female", 101, "software developer");
+  console.log(emp1);
+  console.log(deve1);
+
+  //inheritance class between class objects
+
+  class shape {
+    constructor(a) {
+      this.area = a;
+    }
+  }
+  class circle extends shape {
+    disp() {
+      console.log("Area of Circle:" + " " + this.area);
+    }
+  }
+  var areaobj = new circle(223);
+  areaobj.disp();
+
+  //Encapsulation
+  //concept of promiess
+  //Asynchronous JavaScript, AJAX and APIs
+</script>
