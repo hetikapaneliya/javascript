@@ -1,188 +1,340 @@
-<script>
-  //consrutor and new operator
+<!DOCTYPE html>
+<html>
+  <head>
+    <body>
+      <!--  <p>Object Oriented Programming concepts...</p>-->
+      <h1 id="demo">Object Oriented Programming concepts...</h1>
 
-  const car = {
-    carname: "kia",
-    color: "white",
-    speed: 120,
-    run: function () {
-      console.log("Car is running");
-    },
-  };
+      <script>
+        //consrutor and new operator
 
-  //create a construtor in car
+        const car = {
+          carname: "kia",
+          color: "white",
+          speed: 120,
+          run: function () {
+            console.log("Car is running");
+          },
+        };
 
-  function genratecar(givenname, givenspeed) {
-    this.carname = givenname;
-    this.speed = givenspeed;
-    this.run = function () {
-      console.log(`${this.carname} is running`);
-    };
-  }
-  //NEW OPERATOR
-  car1 = new genratecar("Nishan", 180);
-  console.log(car1);
+        //create a construtor in car
 
-  function person(firstname, birthyears) {
-    this.firstname = firstname;
-    this.birthyears = birthyears;
+        function genratecar(givenname, givenspeed) {
+          this.carname = givenname;
+          this.speed = givenspeed;
+          this.run = function () {
+            console.log(`${this.carname} is running`);
+          };
+        }
+        //NEW OPERATOR
+        car1 = new genratecar("Nishan", 180);
+        console.log(car1);
 
-    this.calcaverage = function () {
-      return 2022 - this.birthyears;
-    };
-  }
+        function person(firstname, birthyears) {
+          this.firstname = firstname;
+          this.birthyears = birthyears;
 
-  const meta = new person("jonas", 1991);
-  const jack = new person("meta", 1990);
-  console.log(meta, jack);
+          this.calcaverage = function () {
+            return 2022 - this.birthyears;
+          };
+        }
 
-  //prototype
-  console.log(person.prototype);
-  person.prototype.calcaverage = function () {
-    console.log(2022 - this.birthyears);
-  };
-  jack.calcaverage();
+        const meta = new person("jonas", 1991);
+        const jack = new person("meta", 1990);
+        console.log(meta, jack);
 
-  //prototype
+        //prototype
+        console.log(person.prototype);
+        person.prototype.calcaverage = function () {
+          console.log(2022 - this.birthyears);
+        };
+        jack.calcaverage();
 
-  function student(studentname, gender) {
-    this.studentname = studentname;
-    this.gender = gender;
-  }
-  const hetika = new student("hetika", 1999);
-  console.log(hetika);
+        //prototype
 
-  student.prototype.age = 15;
+        function student(studentname, gender) {
+          this.studentname = studentname;
+          this.gender = gender;
+        }
+        const hetika = new student("hetika", 1999);
+        console.log(hetika);
 
-  const studentobj = new student();
-  console.log(studentobj.age);
+        student.prototype.age = 15;
 
-  //prototypal inheritance
-  /*
-    const dog={leges:2};
-    const pig={sound:'mows',__proto__:leges};
-    pig.leges;
-    console.log(pig);*/
+        const studentobj = new student();
+        console.log(studentobj.age);
 
-  //classs declaration
+        //prototypal inheritance
+        /*
+         const dog={leges:2};
+         const pig={sound:'mows',__proto__:leges};
+         pig.leges;
+         console.log(pig);*/
 
-  class rect {
-    constructor(height, weghit) {
-      this.heghit = heghit;
-      this.weghit = weghit;
-    }
-  }
+        //classs declaration
 
-  console.log(rect.name);
+        class rect {
+          constructor(height, weghit) {
+            this.heghit = heghit;
+            this.weghit = weghit;
+          }
+        }
 
-  //class expresion
+        console.log(rect.name);
 
-  var Polygon = class {
-    constructor(height, width) {
-      this.h = height;
-      this.w = width;
-    }
-    test() {
-      console.log("The height of the polygon: ", this.h);
-      console.log("The width of the polygon: ", this.w);
-    }
-  };
+        //class expresion
 
-  //creating an instance
-  var polyObj = new Polygon(10, 20);
-  polyObj.test();
+        var Polygon = class {
+          constructor(height, width) {
+            this.h = height;
+            this.w = width;
+          }
+          test() {
+            console.log("The height of the polygon: ", this.h);
+            console.log("The width of the polygon: ", this.w);
+          }
+        };
 
-  //getter and setter
+        //creating an instance
+        var polyObj = new Polygon(10, 20);
+        polyObj.test();
 
-  class students {
-    constructor(rno, fname, lname) {
-      this.rno = rno;
-      this.fname = fname;
-      this.lname = lname;
-      console.log("Inside Consructor");
-    }
-    //setter method::setter method to set the value of property.use set keyword.
-    set rollno(newrollno) {
-      console.log("inside setter");
-      this.rno = newrollno;
-    }
-  }
-  let s1 = new students(80, "Hetika", "paneliya");
-  console.log(s1);
-  //setter method called
+        //getter and setter
 
-  s1.rollno = 90;
-  console.log(s1);
+        class students {
+          constructor(rno, fname, lname) {
+            this.rno = rno;
+            this.fname = fname;
+            this.lname = lname;
+            console.log("Inside Consructor");
+          }
+          //setter method::setter method to set the value of property.use set keyword.
+          set rollno(newrollno) {
+            console.log("inside setter");
+            this.rno = newrollno;
+          }
+        }
+        let s1 = new students(80, "Hetika", "paneliya");
+        console.log(s1);
+        //setter method called
 
-  //getter method:::that is to fetch the value of property.use get keyword.
-  class schoolstudents {
-    constructor(rno, fname, lname) {
-      this.rno = rno;
-      this.fname = fname;
-      this.lname = lname;
-      console.log("Inside Consructor");
-    }
-    //getter method
-    get fullname() {
-      console.log("inside getter");
-      //concat the fullname
-      return this.fname + " " + this.lname;
-    }
-  }
-  let sc1 = new schoolstudents(80, "Hetika", "paneliya");
-  console.log(s1);
-  //getter method called
-  console.log(sc1.fullname);
+        s1.rollno = 90;
+        console.log(s1);
 
-  //static keyword
+        //getter method:::that is to fetch the value of property.use get keyword.
+        class schoolstudents {
+          constructor(rno, fname, lname) {
+            this.rno = rno;
+            this.fname = fname;
+            this.lname = lname;
+            console.log("Inside Consructor");
+          }
+          //getter method
+          get fullname() {
+            console.log("inside getter");
+            //concat the fullname
+            return this.fname + " " + this.lname;
+          }
+        }
+        let sc1 = new schoolstudents(80, "Hetika", "paneliya");
+        console.log(s1);
+        //getter method called
+        console.log(sc1.fullname);
 
-  class staticmen {
-    static display() {
-      console.log("This is Static function");
-    }
-  }
-  staticmen.display();
+        //static keyword
 
-  //inheritance between class constutor function
+        class staticmen {
+          static display() {
+            console.log("This is Static function");
+          }
+        }
+        staticmen.display();
 
-  function employeee(name, empage, gender, id) {
-    this.name = name;
-    this.empage = empage;
-    this.gender = gender;
-    this.id = id;
-  }
-  function develop(name, empage, gender, id, post) {
-    //class constutor calll
+        //inheritance between class constutor function
 
-    employeee.call(this, name, empage, gender, id);
+        function employeee(name, empage, gender, id) {
+          this.name = name;
+          this.empage = empage;
+          this.gender = gender;
+          this.id = id;
+        }
+        function develop(name, empage, gender, id, post) {
+          //class constutor calll
 
-    //adding new perameter
+          employeee.call(this, name, empage, gender, id);
 
-    this.post = post;
-  }
-  //creating objects
+          //adding new perameter
 
-  let emp1 = new employeee("Hetika", 23, "female", 101);
-  let deve1 = new develop("Hetika", 23, "female", 101, "software developer");
-  console.log(emp1);
-  console.log(deve1);
+          this.post = post;
+        }
+        //creating objects
 
-  //inheritance class between class objects
+        let emp1 = new employeee("Hetika", 23, "female", 101);
+        let deve1 = new develop(
+          "Hetika",
+          23,
+          "female",
+          101,
+          "software developer"
+        );
+        console.log(emp1);
+        console.log(deve1);
 
-  class shape {
-    constructor(a) {
-      this.area = a;
-    }
-  }
-  class circle extends shape {
-    disp() {
-      console.log("Area of Circle:" + " " + this.area);
-    }
-  }
-  var areaobj = new circle(223);
-  areaobj.disp();
+        //inheritance class between class objects
 
-  //Encapsulation
-  //concept of promiess
-  //Asynchronous JavaScript, AJAX and APIs
-</script>
+        class shape {
+          constructor(a) {
+            this.area = a;
+          }
+        }
+        class circle extends shape {
+          disp() {
+            console.log("Area of Circle:" + " " + this.area);
+          }
+        }
+        var areaobj = new circle(223);
+        areaobj.disp();
+
+        //Encapsulation
+
+        //concept of promiess
+        //Asynchronous JavaScript, AJAX and APIs
+        console.log("=======Asynchronous javascript");
+        function fun2() {
+          console.log("Fun2 is running");
+        }
+
+        function fun1() {
+          console.log("Fun1 is running");
+          fun2();
+          console.log("Fun1 is ending");
+        }
+        fun1();
+
+        console.log("=======Synchronous javascript");
+        function myfunction() {
+          console.log("Myfunction is running");
+        }
+
+        function myfunction2() {
+          console.log("Myfunction2 is running");
+          myfunction();
+          console.log("Myfunction2 is ending");
+        }
+        myfunction2();
+
+        ///async function
+        async function abc() {
+          console.log("2: message");
+          await console.log("3: message");
+          console.log("4: message");
+        }
+        console.log("1: message");
+        abc();
+        console.log("5: message");
+
+        const getdata = async () => {
+          var y = await "hello world";
+          console.log(y);
+        };
+        console.log(1);
+        getdata();
+        console.log(2);
+        //promiess
+        //syntax:
+        //let prom=new promise();
+        //promise in function
+        //let prom=new promise(function(){
+        //do somthing codee....
+        //})
+        //function using perameter
+        //let prom=new promise(function(resolve,reject){
+        //do somthing codee....
+        //})
+        console.log("======promise1=====");
+
+        function func1() {
+          return new Promise(function (resolve, reject) {
+            const error = true;
+            if (!error) {
+              console.log("Promises has been resloved");
+              resolve();
+            } else {
+              console.log(" promises has been rejected");
+              reject();
+            }
+          });
+        }
+        func1()
+          .then(function () {
+            console.log("Thaks for resolving");
+          })
+          .catch(function () {
+            console.log("very bad");
+          });
+
+        //promiess
+
+        console.log("======promise2=====");
+
+        const count = true;
+        let countvalue = new Promise(function (resolve, reject) {
+          if (count) {
+            resolve("you are reslovew");
+          } else {
+            reject("You are rejected");
+          }
+        });
+        console.log(countvalue);
+
+        console.log("======promise3 it is to Division=====");
+
+        function prom(x, y) {
+          return new Promise(function (resolve, reject) {
+            console.log("Fetch the data in server..");
+            let c = x / y;
+            setTimeout(() => {
+              if (c) {
+                resolve(`Your Answer: ${c}`);
+              } else {
+                reject("Falied answer..");
+              }
+            }, 2000);
+          });
+        }
+
+        prom(12, 8)
+          .then((result) => {
+            console.log(result);
+          })
+          .catch((errors) => {
+            console.log(errors);
+          });
+
+        console.log("======promise3 it is to Mulitipltion=====");
+
+        function calculator(a, b) {
+          return new Promise(function (resolve, reject) {
+            console.log("Fetch data in calculator");
+            let d = a * b;
+            setTimeout(() => {
+              if (d) {
+                resolve(`Your Answer in Mupliply by: ${d}`);
+              } else {
+                reject("Falied answer..");
+              }
+            }, 2000);
+          });
+        }
+
+        calculator(12, 8)
+          .then((fullfill) => {
+            console.log(fullfill);
+          })
+          .catch((rejecteds) => {
+            console.log(rejecteds);
+          });
+      </script>
+    </body>
+  </head>
+</html>
