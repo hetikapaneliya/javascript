@@ -66,10 +66,10 @@
 
         //prototypal inheritance
         /*
-         const dog={leges:2};
-         const pig={sound:'mows',__proto__:leges};
-         pig.leges;
-         console.log(pig);*/
+                            const dog={leges:2};
+                            const pig={sound:'mows',__proto__:leges};
+                            pig.leges;
+                            console.log(pig);*/
 
         //classs declaration
 
@@ -299,7 +299,7 @@
               } else {
                 reject("Falied answer..");
               }
-            }, 2000);
+            });
           });
         }
 
@@ -313,7 +313,7 @@
 
         console.log("======promise3 it is to Mulitipltion=====");
 
-        function calculator(a, b) {
+        function calculate(a, b) {
           return new Promise(function (resolve, reject) {
             console.log("Fetch data in calculator");
             let d = a * b;
@@ -323,17 +323,79 @@
               } else {
                 reject("Falied answer..");
               }
-            }, 2000);
+            });
           });
         }
 
-        calculator(12, 8)
+        calculate(12, 8)
           .then((fullfill) => {
             console.log(fullfill);
           })
           .catch((rejecteds) => {
             console.log(rejecteds);
           });
+
+        ///example
+        async function add(a, b) {
+          return a + b;
+        }
+        const addobj = add(5, 6);
+        addobj.then((result) => {
+          console.log(`Result is ${result}`);
+        });
+
+        async function Multi(a, b) {
+          return a * b;
+        }
+        const multiobj = Multi(5, 6);
+        multiobj.then((result) => {
+          console.log(`Result is ${result}`);
+        });
+
+        async function addition(num1, num2) {
+          const newobj = await (num1 + num2);
+          console.log(`Addition of two number: ${newobj}`);
+          return newobj;
+        }
+        async function division(num3, num4) {
+          const diviobj = await (num3 / num4);
+          console.log(`Division of two number: ${diviobj}`);
+          return diviobj;
+        }
+        async function multiplication(num5, num6) {
+          const muttibj = await (num5 * num6);
+          console.log(`Multiplication of two number: ${muttibj}`);
+          return muttibj;
+        }
+
+        addition(5, 14);
+        division(5, 10);
+        multiplication(14, 23);
+
+        //
+        async function convertuppercase(data) {
+          return data.toUpperCase();
+        }
+        async function main() {
+          const uppercasestring = await convertuppercase(
+            "demo in asyncronous javascript"
+          );
+          console.log(uppercasestring);
+        }
+        main();
+
+        async function touppercasearray(data1) {
+          return data1.toUpperCase();
+        }
+        async function main1() {
+          const lowercasearray = ["mango", "orange", "apple", "peach"];
+          const uppercasearray = lowercasearray.map(async (word) => {
+            return await touppercasearray(word);
+          });
+
+          console.log(uppercasearray);
+        }
+        main1();
       </script>
     </body>
   </head>
