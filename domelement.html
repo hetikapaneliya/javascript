@@ -5,7 +5,7 @@
     <link href="" rel="stylesheet" />
   </head>
   <body>
-    <div id="container">
+    <!---  <div id="container">
       <form>
         <h1>Select a JS Framework:</h1>
         <select id="framework" style="display: block; margin: 20px">
@@ -74,6 +74,130 @@
 
       document.getElementById("btnremove").addEventListener(click, myFunction);
       document.getElementById("btnremove").addEventListener(click, myFunction);
+    </script>-->
+    <h3>Try And Catch</h3>
+    <p>Error Handling in try and catch metohd</p>
+    <input type="text" id="demo" />
+    <button type="button" onclick="trycatchfunction()">Input</button>
+    <p id="p01"></p>
+
+    <script>
+      async function calculate(a, b) {
+        let d = a * b;
+        setTimeout(() => {
+          console.log(`Multipitcation of two number:${d}`);
+        }, 3000);
+      }
+      calculate(5, 10);
+
+      async function division(num3, num4) {
+        const diviobj = await (num3 / num4);
+        console.log(`Division of two number: ${diviobj}`);
+        return diviobj;
+      }
+      division(5, 11);
+
+      async function getdata() {
+        var y = await "hello world";
+        console.log(y);
+      }
+      console.log(1);
+      getdata();
+      console.log(2);
+
+      async function example() {
+        setTimeout(() => {
+          console.log("Hello every one");
+        }, 1000);
+      }
+
+      async function sequence() {
+        const fruit = await ["Apple", "Mango", "pineapple", "orange"];
+        setTimeout(() => {
+          console.log(`Lenght of total array :${fruit.length}`);
+          fruit.push("kiwi");
+          console.log(fruit);
+          const result = fruit.find((fruit) => fruit.startsWith("A"));
+          console.log(result);
+        }, 2000);
+      }
+      sequence();
+
+      var a = {
+        fname: "Hetika",
+        lname: "Paneliya",
+        birthyear: 1999,
+        age: 23,
+        status: "Active",
+        living: {
+          city: "surat",
+          country: "india",
+          friends: ["dev", "dhurvi", "janki"],
+        },
+      };
+      const calage = async (birthyear) => {
+        const fullname = "I am " + " " + a.fname + " " + a.lname;
+        console.log(fullname);
+      };
+
+      setTimeout(() => {
+        console.log(2022 - a.birthyear);
+        console.log(a.living.friends[0]);
+        console.log(a.living.country);
+      }, 4000);
+      calage();
+
+      //try and catch
+
+      let data = prompt("name");
+      try {
+        if (data === "") {
+          throw new Error("data is empty");
+        } else {
+          alert(`Hi ${data} how do you do today`);
+        }
+      } catch (e) {
+        alert(e);
+      }
+
+      function trycatchfunction() {
+        const message = document.getElementById("p01");
+        message.innerHTML = "";
+        let x = document.getElementById("demo").value;
+        try {
+          if (x == " ") throw "empty";
+          if (isNaN(x)) throw "Not a Number";
+          x = Number(x);
+          if (x < 5) throw " to low";
+          if (x > 10) throw " to high";
+        } catch (err) {
+          message.innerHTML = "Input is " + err;
+        }
+      }
+
+      //try catch and finally
+      let data1 = prompt("name");
+      try {
+        if (data1 === "") {
+          throw new Error("data is empty");
+        } else {
+          alert(`Hi ${data1} how do you do today`);
+        }
+      } catch (e) {
+        alert(e);
+      } finally {
+        alert("Try and Catch block");
+      }
+
+      //callback
+      function greeting(name) {
+        alert("Hello" + " " + name);
+      }
+      function processuserinput(callback) {
+        var name = prompt("Enter your name");
+        callback(name);
+      }
+      processuserinput(greeting);
     </script>
   </body>
 </html>
