@@ -1,38 +1,70 @@
 <script>
-  /* debugger;
-  function countwaytosplit(s) {
-    debugger;
-    let n = s.length();
-    let ans = 0;
-    for (let i = 1; i <= n / 2; i++) {
-      debugger;
-      let a = s.substring(0, i);
-      for (let j = i; j <= n / 2; j++) {
-        let b = s.substring(j, n / 2 + 1);
-        let c = s.substring(b.length() + 1, n);
-        if (!b.equals(c) || !b.equals(a) || !c.equals(a)) {
-          ++ans;
-        }
-      }
-    }
-    document.write(countwaytosplit);
-  }*/
+  var str = "XZXZX";
 
-  var str = "xzxzx";
-  debugger;
   var count = 0;
-  debugger;
-  for (var i = 0; i < str.length - 2; i++) {
-    debugger;
+
+  for (var i = 0; i < str.length; i++) {
     for (var j = i + 1; j < str.length - 1; j++) {
-      var a = str.slice(0, i + 1);
-      var b = str.slice(i + 1, j + 1);
-      var c = str.slice(j + 1, str.length);
+      var a = str.slice(0, i + 1); //x
+      var b = str.slice(i + 1, j + 1); //z
+      var c = str.slice(j + 1, str.length); //xzx
       if (a + b != b + c && b + c != c + a && a + b != c + a) {
         count++;
       }
     }
   }
 
-  console.log(count);
+  document.write(
+    ` Split The string is ${str} and the count the number is :: ${count}`
+  );
+  document.write("<hr>");
+
+  //task1
+
+  const data = [2, 1, 2, 3, 3, 4];
+  const duplicates = [];
+  const duplicate1 = [];
+
+  for (let i = 0; i <= data.length; i = i + 2) {
+    if (data[i] !== undefined) {
+      duplicates.push(data[i]);
+      duplicate1.push(data[i + 1]);
+    }
+  }
+
+  console.log(duplicates, duplicate1);
+  //task2
+
+  function matrix(matrixdata) {
+    for (var i = 0; i < matrixdata.length; i++) {
+      for (var j = 0; j < matrixdata.length; j++) {
+        if (
+          (matrixdata[i][j] !== 1 && i === j) ||
+          (matrixdata[i][j] && i !== j)
+        ) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  document.write(
+    `Matrix is:${matrix([
+      [1, 0, 0],
+      [0, 1, 0],
+      [0, 0, 1],
+    ])}`
+  );
+  document.write("<br>");
+  document.write("<hr>");
+  document.write(
+    `Matrix Is:${matrix([
+      [1, 0, 1],
+      [0, 1, 0],
+      [0, 0, 1],
+    ])}`
+  );
+
+  //
 </script>
