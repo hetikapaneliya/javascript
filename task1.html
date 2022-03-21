@@ -20,8 +20,21 @@
   document.write("<hr>");
 
   //task1
+  /*
+          Given an array of integers of even length, your task is to split it into two arrays of equal length such that all the numbers are unique in each of them.
+          There may be more than one possible answer, in which case you may return any of them. If there are no possible answers, return an empty array.
+          Hint: Count the number of occurrences of each integer in a. If there are integers occurring more than twice, then there is no solution. Next, put the integers occurring twice into both answer
+          arrays. Finally, put all other numbers in the answer arrays, following the condition that they should have equal sizes.
+          Example
+          For a = [2, 1, 2, 3, 3, 4], the output can be divideArray(a) = [[2, 1, 3], [2, 3, 4]].
+          Answers like [[1, 2, 3], [2, 3, 4]] or [[4, 2, 3], [3, 2, 1]] would also be considered correct.
+          For a = [1, 2, 2, 1], the output can be divideArray(a) = [[1, 2], [2, 1]].
+          Again, there are other possible answers.
+          For a = [2, 2, 3, 3, 2, 2], the output should be divideArray(a) = [].
+          No matter how we try to split this array, there will be at least two 2s in at least one of the resulting arrays. So the answer is [].
 
-  const data = [2, 1, 2, 3, 3, 4];
+         */
+  const data = [1, 2, 2, 1];
   const duplicates = [];
   const duplicate1 = [];
 
@@ -33,6 +46,7 @@
   }
 
   console.log(duplicates, duplicate1);
+
   //task2
 
   function matrix(matrixdata) {
@@ -51,20 +65,103 @@
 
   document.write(
     `Matrix is:${matrix([
-      [1, 0, 0],
-      [0, 1, 0],
-      [0, 0, 1],
+      [0, 2, 1],
+      [5, 4, 0],
     ])}`
   );
   document.write("<br>");
   document.write("<hr>");
   document.write(
     `Matrix Is:${matrix([
-      [1, 0, 1],
+      [1, 0, 0],
       [0, 1, 0],
       [0, 0, 1],
     ])}`
   );
 
   //
+  /*
+           Consider a map of city streets, in the form of a grid.
+
+         You'd like to know if it's possible to make your way to the exit, under the following rules:
+         You begin from the left side of the square in the top-left corner;
+         The exit is on the right side of the square in the bottom-right corner;
+         You must travel along a connected path between squares.
+         You're given directions, a matrix of integers representing the grid of streets, where each integer corresponds to a different type of road square:
+         5 stands for
+         Your task is to return true if it's possible to reach the exit, and false otherwise.
+         Example
+         For directions = [[0, 2, 1], [5, 4, 0]], the output should be trafficMap(directions) = true.
+         It's possible to enter the top-left square from the left, travel along a connected path, and exit the right side of the bottom-right square. So the answer is true.
+         For directions = [[0, 2, 1], [5, 4, 1]], the output should be trafficMap(directions) = false.
+         It's possible to enter the top-left square from the left, but there's no connected path that leads to the bottom-right square. So the answer is false.
+         For directions = [[0, 2, 1], [5, 4, 2]], the output should be trafficMap(directions) = false.
+         The path leading to the bottom-right square exists, but it doesn't exit to the right.
+         For directions = [[1], [4]], the output should be trafficMap(directions) = false.
+         It's possible to travel along the path to the exit, but the entrance isn't in the right place.
+
+
+         */
+
+  function trafficmap(grid) {
+    const visited = grid.map((items) => items.map(() => false));
+    const isValidPosition = (row, column) => {
+      if (
+        row < 0 ||
+        row > grid.length - 1 ||
+        column < 0 ||
+        column > grid[row].length - 1 ||
+        visited[row][column]
+      ) {
+        return false;
+      }
+      return true;
+    };
+    const isType = (row, column, types = []) =>
+      isValidPosition(row, column) && types.includes(grid[row][column]);
+    const canGoRight = (row, column) => isType(row, column, [1, 3, 5]);
+    const canGoLeft = (row, column) => isType(row, column, [1, 4, 6]);
+    const canGoDown = (row, column) => isType(row, column, [2, 5, 6]);
+    const canGoUp = (row, colum) => isType(row, colum, [2, 3, 4]);
+
+    const dirMap = {
+      1: { left: true, right: true },
+      2: { top: true, down: true },
+      3: { left: true, down: true },
+      4: { right: true, down: true },
+      5: { left: true, top: true },
+      6: { top: true, right: true },
+    };
+    let current = [0, 0];
+    while (current.length > 0) {
+      const next = [];
+      current.forEach(([row, column]) => {
+        if (isValidPosition(row, column)) {
+          visited[row][column] = true;
+          const { top, down, left, right } = dirMap[grid[row][column]];
+
+          if (left && canGoLeft(row, column - 1)) {
+            next.push([row, column - 1]);
+          }
+          if (right && canGoRight(row, column + 1)) {
+            next.push([row, column + 1]);
+          }
+          if (top && canGoUp(row - 1, column)) {
+            next.push([row - 1, column]);
+          }
+          if (down && canGoDown(row + 1, column)) {
+            next.push([row + 1, column]);
+          }
+        }
+      });
+      current = next;
+    }
+    return visited[grid.length - 1][grid[0].length - 1];
+  }
+
+  const directions = [
+    [0, 2, 1],
+    [5, 4, 0],
+  ];
+  console.log(trafficmap(directions));
 </script>
