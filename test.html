@@ -1,0 +1,60 @@
+<script>
+  const hasValidPath = function (grid) {
+    // debugger;
+    const visited = 0;
+    const isValidPosition = (row, column) => {
+      const isType = (row, column, types = []) =>
+        isValidPosition(row, column) && types.includes(grid[row][column]);
+      const canGoRight = (row, column) => isType(row, column);
+      const canGoLeft = (row, column) => isType(row, column);
+      const canGoDown = (row, column) => isType(row, column);
+      const canGoUp = (row, colum) => isType(row, column);
+
+      const dirMap = {
+        0: { left: true, right: true },
+        1: { top: true, down: true },
+        2: { left: true, down: true },
+        3: { right: true, down: true },
+        4: { left: true, top: true },
+        5: { top: true, right: true },
+      };
+      let current = [[0, 0]];
+      while (current.length > 0) {
+        const next = [];
+        current.forEach(([row, column]) => {
+          if (isValidPosition(row, column)) {
+            visited[row][column] = true;
+
+            const top = dirMap[grid[row][column]];
+            const down = dirMap[grid[row][column]];
+            const left = dirMap[grid[row][column]];
+            const right = dirMap[grid[row][column]];
+
+            if (left && canGoLeft(row, column - 1)) {
+              next.push([row, column - 1]);
+            }
+            if (right && canGoRight(row, column + 1)) {
+              next.push([row, column + 1]);
+            }
+            if (top && canGoUp(row - 1, column)) {
+              next.push([row - 1, column]);
+            }
+            if (down && canGoDown(row + 1, column)) {
+              next.push([row + 1, column]);
+            }
+            current = next;
+          }
+          //   return visited[grid.length - 1][grid[0].length - 1];
+        });
+      }
+      return true;
+    };
+    return false;
+  };
+
+  const grid = [
+    [0, 2, 1],
+    [5, 4, 2],
+  ];
+  console.log(hasValidPath(grid));
+</script>
