@@ -797,20 +797,20 @@
 
     var trafficmap = function (grid) {  // Directions
       const nextElement = {
-        0: {i:1,j:0},
-        1: {i:0,j:1},
-        2:{i:0,j:1},
-        3:{i:1,j:0},
-        4:{i:1,j:0},
+        0: {i:0,j:1},
+        1: {i:1,j:0},
+        2:{i:1,j:0},
+        3:{i:0,j:1},
+        4:{i:0,j:1},
         5:{j:1,i:1}
       }
       let dir = {
         0: [0, 2, 5],//topright
-        1: [1,2,0],//top down
-        2: [2,0,3],//left down
-        3: [3,0],//right down
-        4: [4,2,0],//top right
-        5: [5,3,0]//top left
+        1: [4,5],//top down
+        2: [4,5],//left down
+        3: [0,2,5],//right down
+        4: [0,2,5],//top right
+        5: [1,2,3]//top left
       };
 
       // Queue
@@ -818,12 +818,14 @@
       //debugger
       let start = `0,0`;
       let visited = start;
-      let m = grid[0].length, n1 = grid[0].length;
-      
+      let m = grid.length, n1 = grid[0].length;
+      console.log(m, n1, "length");
+      let curi=0, curj=0;
+      let currElement = grid[curi][curj];
+      console.log(currElement, "currentElement")
       // Until queue is empty
-      while (q.length > 0) {
+      while (curi < m && curj < n1) {
         //current i and current j
-        let [curi, curj] = q.shift();
         
         if (curi === m - 1 && curj === n1 - 1) {
            if(grid[curi][curj] === 0 || grid[curi][curj] === 4 )
@@ -831,23 +833,33 @@
              return true;
            }
           return false;
-        }else {
-       let directions = dir[grid[curi][curj]];
-      for(let i=0;i<nextElement;i++){
-        nextElement.value;
-      }
-      }
-         for(let j=i;j<nextElement-1;j++){
-           nextElement.value;
-            
+        } else {
+          let directions = dir[currElement];
+          // debugger;
+          const nextOfCurre = nextElement[currElement];
+          console.log("nextOfCurr", nextOfCurre);
+          const [nexti, nextj] = [nextOfCurre.i ? curi+1 : curi, nextOfCurre.j ? curj + 1 : curj];
+          console.log(nexti, nextj,"nexti,nextj")
+          const nextEle = grid[nexti][nextj];
+          console.log("nextEle", nextEle, directions);
+          // debugger;
+          if(directions.includes(nextEle))
+          {
+            console.log("match")
+            currElement = nextEle;
+            curi = nexti;
+            curj = nextj;
+          } else {
+            return false;
           }
-          return true;
-        }
-        return false;
+       }
       }
+    }
     
      
-    let grid = [[0, 2, 1], [5, 4, 0]];
+    let grid = [
+    [0,2,1],[5,4,1]
+    ];
     console.log(trafficmap(grid));
       
      
