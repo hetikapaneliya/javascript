@@ -700,7 +700,7 @@
     const evendata = evenarraylenght(data);
     console.log(evendata);
 
-document.write("<hr>");
+    document.write("<hr>");
 
 
     ///
@@ -792,59 +792,69 @@ document.write("<hr>");
 
     // To find the path from
     // top left to bottom right
-   
-    
-   
-    var trafficmap = function(grid){  // Directions
+
+
+
+    var trafficmap = function (grid) {  // Directions
+      const nextElement = {
+        0: {i:1,j:0},
+        1: {i:0,j:1},
+        2:{i:0,j:1},
+        3:{i:1,j:0},
+        4:{i:1,j:0},
+        5:{j:1,i:1}
+      }
       let dir = {
-        0: [[0, -1],  [0, 1]],
-        1: [[-1, 0],  [1, 0]],
-        2: [[0, -1],  [1, 0]],
-        3: [[0,  1],  [1, 0]],
-        4: [[0, -1],  [-1, 0]],
-        5: [[-1, 0],  [0, 1]]
+        0: [0, 2, 5],//topright
+        1: [1,2,0],//top down
+        2: [2,0,3],//left down
+        3: [3,0],//right down
+        4: [4,2,0],//top right
+        5: [5,3,0]//top left
       };
 
       // Queue
       var q = [[0, 0]];
-    //  debugger
-      let start=`0,0`;
-      let visited = { start: true };
+      //debugger
+      let start = `0,0`;
+      let visited = start;
       let m = grid[0].length, n1 = grid[0].length;
-     
+      
       // Until queue is empty
       while (q.length > 0) {
         //current i and current j
         let [curi, curj] = q.shift();
-        if (curi === m-1 && curj === n1 - 1) return true;
-
-        let directions = dir[grid[curi][curj]];
-      
-        for (let [u, v] of directions) {
-          let i = curi + u, j = curj + v;
-          console.log(m);
-          if (i < 0|| i > m-1 || j < 0 || j > n1 - 1 || visited[`${i},${j}`]) continue;
-          //next grid
-          let next = false;
-          let nextgriddirection = dir[grid[i][j]];
-          
-          for (let [p, q] of nextgriddirection) {
-            //console.log(next);
-            
-            if (p + i === curi && q + j === curj) next = true;
-          }
-          
-          if (next) {
-            q.push([i, j]);
-            visited[`${i},${j}`] = true;
-            console.log(visited);
-          }
-        }
+        
+        if (curi === m - 1 && curj === n1 - 1) {
+           if(grid[curi][curj] === 0 || grid[curi][curj] === 4 )
+           {
+             return true;
+           }
+          return false;
+        }else {
+       let directions = dir[grid[curi][curj]];
+      for(let i=0;i<nextElement;i++){
+        nextElement.value;
       }
-      return false;
-    }
-    let grid = [[0, 2, 1], [5, 4, 1]];
+      }
+         for(let j=i;j<nextElement-1;j++){
+           nextElement.value;
+            
+          }
+          return true;
+        }
+        return false;
+      }
+    
+     
+    let grid = [[0, 2, 1], [5, 4, 0]];
     console.log(trafficmap(grid));
+      
+     
+      
+    
+  
+   
 
   </script>
 </head>
