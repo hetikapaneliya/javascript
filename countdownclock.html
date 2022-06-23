@@ -1,0 +1,38 @@
+<head>
+  <body class="count_body">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+
+    <div class="container count_container">
+      <span id="hours" class="time">00</span>
+      <span class="colon">:</span>
+      <span id="minutes" class="time">00</span>
+      <span class="colon">:</span>
+      <span id="seconds" class="time">00</span>
+    </div>
+  </body>
+</head>
+
+<script>
+  function diaplayTime() {
+    var dateTime = new Date();
+    var hrs = dateTime.getHours();
+    var min = dateTime.getMinutes();
+    var sec = dateTime.getSeconds();
+
+    if (hrs < 10) {
+      hrs = "0" + hrs;
+    }
+    if (min < 10) {
+      min = "0" + min;
+    }
+    if (sec < 10) {
+      sec = "0" + sec;
+    }
+    document.getElementById("hours").innerHTML = hrs;
+    document.getElementById("minutes").innerHTML = min;
+    document.getElementById("seconds").innerHTML = sec;
+  }
+  setInterval(diaplayTime, 1000);
+</script>
