@@ -1,32 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Guess My Number!</title>
+    <title>JavaScript CRUD Example Tutorial</title>
+    <link rel="stylesheet" href="style1.css" />
   </head>
+
   <body>
-    <header>
-      <h1>Guess My Number!</h1>
-      <p class="between">(Between 1 and 20)</p>
-      <button class="btn again">Again!</button>
-      <div class="number">?</div>
-    </header>
-    <main>
-      <section class="left">
-        <input type="number" class="guess" />
-        <button class="btn check">Check!</button>
-      </section>
-      <section class="right">
-        <p class="message">Start guessing...</p>
-        <p class="label-score">💯 Score: <span class="score">20</span></p>
-        <p class="label-highscore">
-          🥇 Highscore: <span class="highscore">0</span>
-        </p>
-      </section>
-    </main>
-    <script src="script.js"></script>
+    <h1><center>JavaScript CRUD Example Tutorial</center></h1>
+    <hr />
+    <div class="employee-form">
+      <form
+        onsubmit="event.preventDefault();onFormSubmit();"
+        autocomplete="off"
+      >
+        <div>
+          <label>Full Name*</label>
+          <label class="validate-error hide" id="fullValidateError"
+            >This Filed required Validate</label
+          >
+          <input type="text" name="fullName" id="fullName" />
+        </div>
+        <div>
+          <label>Email Id</label>
+          <input type="text" name="email" id="email" />
+        </div>
+        <div>
+          <label>Salary</label>
+          <input type="text" name="salary" id="salary" />
+        </div>
+        <div>
+          <label>City</label>
+          <input type="text" name="city" id="city" />
+        </div>
+        <div class="form-action-buttons">
+          <input type="submit" value="Submit" />
+        </div>
+      </form>
+    </div>
+    <br />
+    <div class="employees-table">
+      <table class="list" id="employeeList">
+        <thead>
+          <tr>
+            <th>Full Name</th>
+            <th>Email Id</th>
+            <th>Salary</th>
+            <th>City</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <script src="test.js"></script>
   </body>
 </html>
