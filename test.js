@@ -107,4 +107,4 @@ const calage1 = (birthyear, name) => {
   return `${name} retire in ${retirment}`;
 };
 console.log(calage1(1999, "hetika"));
-console.log(calage1(2003, "dev"));~
+console.log(calage1(2003, "dev"));
